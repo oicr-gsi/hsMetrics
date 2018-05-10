@@ -162,7 +162,7 @@ public class HSMetricsWorkflow extends OicrWorkflow {
         Command cmd = bedToInterval.getCommand();
         cmd.addArgument(this.java);
         cmd.addArgument(this.javaMem);
-        cmd.addArgument("jar " + this.picard + " BedToIntervalList");
+        cmd.addArgument("-jar " + this.picard + " BedToIntervalList");
         cmd.addArgument("I="+ this.baitIntervals);
         cmd.addArgument("O=" + this.tmpDir+ "/" +"target.interval_list");
         cmd.addArgument("D="+this.refDict);
@@ -177,7 +177,7 @@ public class HSMetricsWorkflow extends OicrWorkflow {
         Command cmd = collectHSMetrics.getCommand();
         cmd.addArgument(this.java);
         cmd.addArgument(this.javaMem);
-        cmd.addArgument("jar " + this.picard + " CollectHsMetrics");
+        cmd.addArgument("-jar " + this.picard + " CollectHsMetrics");
         cmd.addArgument("BAIT_INTERVALS="+ this.baitIntervals);
         cmd.addArgument("TARGET_INTERVALS=" + this.targetIntervals);
         cmd.addArgument("R="+this.refFasta);
@@ -195,7 +195,7 @@ public class HSMetricsWorkflow extends OicrWorkflow {
         Command cmd = collectInsertMetrics.getCommand();
         cmd.addArgument(this.java);
         cmd.addArgument(this.javaMem);
-        cmd.addArgument("jar " + this.picard+ " CollectInsertSizeMetrics");
+        cmd.addArgument("-jar " + this.picard+ " CollectInsertSizeMetrics");
         cmd.addArgument("I="+ inBam);
         cmd.addArgument("O=" + outMetrics);
         cmd.addArgument("H=" + outPdf);
