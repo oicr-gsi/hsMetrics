@@ -126,9 +126,9 @@ public class HSMetricsWorkflow extends OicrWorkflow {
         this.outDir = this.outputFilenamePrefix + "_output/";
         String inBam = getFiles().get("inBam").getProvisionedPath();
         
-        String outMetrics1 = this.outDir + this.outputFilenamePrefix + ".HS";
-        String outMetrics2 = this.outDir + this.outputFilenamePrefix + ".HS2";
-        String outPdf = this.outDir + this.outputFilenamePrefix + ".pdf";
+        String outMetrics1 = this.dataDir + this.outputFilenamePrefix + ".HS";
+        String outMetrics2 = this.dataDir + this.outputFilenamePrefix + ".INS";
+        String outPdf = this.dataDir + this.outputFilenamePrefix + ".INS.pdf";
         
         Job collectINS = picardCollectInsertMetrics(inBam, outMetrics2, outPdf);
         parentJob = collectINS;
@@ -165,7 +165,7 @@ public class HSMetricsWorkflow extends OicrWorkflow {
         cmd.addArgument("-jar " + this.picard + " BedToIntervalList");
         cmd.addArgument("I="+ this.baitIntervals);
         cmd.addArgument("O=" + this.tmpDir+ "/" +"target.interval_list");
-        cmd.addArgument("D="+this.refDict);
+        cmd.addArgument("SD="+this.refDict);
         bedToInterval.setMaxMemory(Integer.toString(this.picardMem * 1024));
         bedToInterval.setQueue(getOptionalProperty("queue", ""));
         return bedToInterval;
