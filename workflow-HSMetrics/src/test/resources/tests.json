@@ -12,8 +12,8 @@
             "parameters": {
                 "input_bam_file": "/.mounts/labs/PDE/data/testdata/genomic/bam/TGL_test/Sequenza/TGL01_0001_Sk_M_PE_426_EX.sorted.filter.deduped.realign.recal.bam",
                 "external_identifier": "INS-D-004-ST",
-                "bait_intervals": "/.mounts/labs/TGL/gsi/manifests/Agilent_SureSelectXT_Human_All_Exon_V5_UTRs.bed",
-                "target_intervals": "/.mounts/labs/TGL/gsi/manifests/Agilent_SureSelectXT_Human_All_Exon_V5_UTRs.bed.interval_list"
+                "bait_intervals": "/.mounts/labs/PDE/data/interval-files/TargetedSequencingQC/Agilent.SureSelect.All.Exon.V5.UTR/Agilent_SureSelectXT_Human_All_Exon_V5_UTRs.bed",
+                "target_intervals": "/.mounts/labs/PDE/data/interval-files/TargetedSequencingQC/Agilent.SureSelect.All.Exon.V5.UTR/Agilent_SureSelectXT_Human_All_Exon_V5_UTRs.bed.interval_list"
             }
         },
         {
@@ -21,7 +21,7 @@
             "parameters": {
                 "input_bam_file": "/.mounts/labs/PDE/data/testdata/genomic/bam/TGL_test/Sequenza/TGL01_0001_Sk_M_PE_426_EX.sorted.filter.deduped.realign.recal.bam",
                 "external_identifier": "INS-D-004-ST",
-                "bait_intervals":"/.mounts/labs/TGL/gsi/manifests/Agilent_SureSelectXT_Human_All_Exon_V5_UTRs.bed"
+                "bait_intervals":"/.mounts/labs/PDE/data/interval-files/TargetedSequencingQC/Agilent.SureSelect.All.Exon.V5.UTR/Agilent_SureSelectXT_Human_All_Exon_V5_UTRs.bed"
             }
         }
     ]
