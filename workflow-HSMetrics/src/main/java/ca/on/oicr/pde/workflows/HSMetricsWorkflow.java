@@ -161,7 +161,7 @@ public class HSMetricsWorkflow extends OicrWorkflow {
         collectINS.addFile(outHS2);
         
         SqwFile outPDF = createOutputFile(outPdf, PDF_METATYPE, this.manualOutput);
-        outPDF.getAnnotations().put("Insert_size_metrics", "picard");
+        outPDF.getAnnotations().put("Insert_size_pdf", "picard");
         collectINS.addFile(outPDF);
         
     }
