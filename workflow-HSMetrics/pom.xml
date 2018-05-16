@@ -11,13 +11,24 @@
     </parent>
     
     <groupId>ca.on.oicr.pde.workflows</groupId>
-    <artifactId>workflow-HSMetrics</artifactId>
+    <artifactId>HSMetrics</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
     <url>http://maven.apache.org</url>
 
     <properties>
-        <workflow-name>HSMetrics</workflow-name>
+        <workflow-name>workflow-HSMetrics</workflow-name>
+        <picard-version>1.89</picard-version>
     </properties>
+    
+    <dependencies>
+        <dependency>
+            <groupId>picard</groupId>
+            <artifactId>picard-tools</artifactId>
+            <version>${picard-version}</version>
+            <type>zip</type>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 </project>
