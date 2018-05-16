@@ -42,7 +42,7 @@ public class HSMetricsWorkflow extends OicrWorkflow {
 
     //Memory allocation
     private Integer picardMem;
-    private String javaMem = "-Xmx16g";
+    private String javaMem = "-Xmx24g";
 
 
 
@@ -140,12 +140,12 @@ public class HSMetricsWorkflow extends OicrWorkflow {
         // Check for presence of target intervals file
         if ( this.targetIntervals == "pass" || this.targetIntervals == null ){
             Job bedToTarg = picardBedToInterval(this.targetBed);
-            this.targetIntervals = this.tmpDir+ "/" + FilenameUtils.getBaseName(this.targetBed)+".interval_list";
+            this.targetIntervals = this.tmpDir+ FilenameUtils.getBaseName(this.targetBed)+".interval_list";
             parentJob = bedToTarg;
         }
         if ( this.baitIntervals == "pass" || this.baitIntervals == null ){
             Job bedToTarg = picardBedToInterval(this.baitBed);
-            this.baitIntervals = this.tmpDir+ "/" + FilenameUtils.getBaseName(this.baitBed)+".interval_list";
+            this.baitIntervals = this.tmpDir + FilenameUtils.getBaseName(this.baitBed)+".interval_list";
             parentJob = bedToTarg;
         }
         Job collectHS = picardCollectHSMetrics(inBam, outMetrics1);
@@ -173,7 +173,7 @@ public class HSMetricsWorkflow extends OicrWorkflow {
         cmd.addArgument(this.javaMem);
         cmd.addArgument("-jar " + this.picard + " BedToIntervalList");
         cmd.addArgument("I="+ bedFile);
-        cmd.addArgument("O=" + this.tmpDir+ "/" + FilenameUtils.getBaseName(bedFile)+".interval_list");
+        cmd.addArgument("O=" + this.tmpDir + FilenameUtils.getBaseName(bedFile)+".interval_list");
         cmd.addArgument("SD="+this.refDict);
         bedToInterval.setMaxMemory(Integer.toString(this.picardMem * 1024));
         bedToInterval.setQueue(getOptionalProperty("queue", ""));
@@ -190,8 +190,8 @@ public class HSMetricsWorkflow extends OicrWorkflow {
         cmd.addArgument("BAIT_INTERVALS="+ this.baitIntervals);
         cmd.addArgument("TARGET_INTERVALS=" + this.targetIntervals);
         cmd.addArgument("R="+this.refFasta);
-        cmd.addArgument("INPUT="+ inBam);
-        cmd.addArgument("OUTPUT="+outMetrics);
+        cmd.addArgument("INPUT=" + inBam);
+        cmd.addArgument("OUTPUT=" + outMetrics);
         cmd.addArgument("COVERAGE_CAP=500");
         cmd.addArgument("VALIDATION_STRINGENCY=LENIENT");
         collectHSMetrics.setMaxMemory(Integer.toString(this.picardMem * 1024));
