@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import net.sourceforge.seqware.pipeline.workflowV2.model.Command;
 import net.sourceforge.seqware.pipeline.workflowV2.model.Job;
 import net.sourceforge.seqware.pipeline.workflowV2.model.SqwFile;
+import org.apache.commons.io.FilenameUtils;
 
 /**
  * <p>
@@ -51,6 +52,8 @@ public class HSMetricsWorkflow extends OicrWorkflow {
 //    private String captureBed;
     private String baitIntervals;
     private String targetIntervals;
+    private String baitBed;
+    private String targetBed;
 
     private boolean manualOutput;
     private String queue;
@@ -78,9 +81,10 @@ public class HSMetricsWorkflow extends OicrWorkflow {
 
             // ref fasta
             refFasta = getProperty("ref_fasta");
-            baitIntervals = getProperty("bait_intervals");
+            baitIntervals = getOptionalProperty("bait_intervals", "pass");
             targetIntervals = getOptionalProperty("target_intervals", "pass");
-//            captureBed = getOptionalProperty("capture_bed", "pass");
+            baitBed = getProperty("bait_bed");
+            targetBed = getOptionalProperty("target_bed", this.baitBed);
             refDict = getProperty("ref_dict");
             
 
@@ -135,8 +139,13 @@ public class HSMetricsWorkflow extends OicrWorkflow {
         
         // Check for presence of target intervals file
         if ( this.targetIntervals == "pass" || this.targetIntervals == null ){
-            Job bedToTarg = picardBedToInterval();
-            this.targetIntervals = this.tmpDir+ "/" +"target.interval_list";
+            Job bedToTarg = picardBedToInterval(this.targetBed);
+            this.targetIntervals = this.tmpDir+ "/" + FilenameUtils.getBaseName(this.targetBed)+".interval_list";
+            parentJob = bedToTarg;
+        }
+        if ( this.baitIntervals == "pass" || this.baitIntervals == null ){
+            Job bedToTarg = picardBedToInterval(this.baitBed);
+            this.baitIntervals = this.tmpDir+ "/" + FilenameUtils.getBaseName(this.baitBed)+".interval_list";
             parentJob = bedToTarg;
         }
         Job collectHS = picardCollectHSMetrics(inBam, outMetrics1);
@@ -157,14 +166,14 @@ public class HSMetricsWorkflow extends OicrWorkflow {
         
     }
     
-    private Job picardBedToInterval() {
+    private Job picardBedToInterval(String bedFile) {
         Job bedToInterval = getWorkflow().createBashJob("bed_to_interval");
         Command cmd = bedToInterval.getCommand();
         cmd.addArgument(this.java);
         cmd.addArgument(this.javaMem);
         cmd.addArgument("-jar " + this.picard + " BedToIntervalList");
-        cmd.addArgument("I="+ this.baitIntervals);
-        cmd.addArgument("O=" + this.tmpDir+ "/" +"target.interval_list");
+        cmd.addArgument("I="+ bedFile);
+        cmd.addArgument("O=" + this.tmpDir+ "/" + FilenameUtils.getBaseName(bedFile)+".interval_list");
         cmd.addArgument("SD="+this.refDict);
         bedToInterval.setMaxMemory(Integer.toString(this.picardMem * 1024));
         bedToInterval.setQueue(getOptionalProperty("queue", ""));
