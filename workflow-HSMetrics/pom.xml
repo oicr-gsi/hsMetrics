@@ -19,16 +19,7 @@
 
     <properties>
         <workflow-name>workflow-HSMetrics</workflow-name>
-        <picard-version>1.89</picard-version>
     </properties>
     
-    <dependencies>
-        <dependency>
-            <groupId>picard</groupId>
-            <artifactId>picard-tools</artifactId>
-            <version>${picard-version}</version>
-            <type>zip</type>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
+    
 </project>
