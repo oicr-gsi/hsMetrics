@@ -42,7 +42,7 @@ public class HSMetricsWorkflow extends OicrWorkflow {
 
     //Memory allocation
     private Integer picardMem;
-    private String javaMem = "-Xmx24g";
+    private String javaMem = "-Xmx16g";
 
 
 
