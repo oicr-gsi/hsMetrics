@@ -160,9 +160,9 @@ public class HSMetricsWorkflow extends OicrWorkflow {
 //        outPDF.getAnnotations().put("Insert_size_pdf", "picard");
 //        collectINS.addFile(outPDF);
 //        
-//        SqwFile outHS1 = createOutputFile(outMetrics1, TXT_METATYPE, this.manualOutput);
-//        outHS1.getAnnotations().put("HS_metrics", "picard");
-//        collectHS.addFile(outHS1);
+        SqwFile outHS1 = createOutputFile(outMetrics1, TXT_METATYPE, this.manualOutput);
+        outHS1.getAnnotations().put("HS_metrics", "picard");
+        collectHS.addFile(outHS1);
     }
     
     private Job picardBedToInterval(String bedFile) {
