@@ -152,14 +152,14 @@ public class HSMetricsWorkflow extends OicrWorkflow {
         collectHS.addParent(parentJob);
         
         // Provision out HS, HS2 and pdf
-//        SqwFile outHS2 = createOutputFile(outMetrics2, TXT_METATYPE, this.manualOutput);
-//        outHS2.getAnnotations().put("Insert_size_metrics", "picard");
-//        collectINS.addFile(outHS2);
-//        
-//        SqwFile outPDF = createOutputFile(outPdf, PDF_METATYPE, this.manualOutput);
-//        outPDF.getAnnotations().put("Insert_size_pdf", "picard");
-//        collectINS.addFile(outPDF);
-//        
+        SqwFile outHS2 = createOutputFile(outMetrics2, TXT_METATYPE, this.manualOutput);
+        outHS2.getAnnotations().put("Insert_size_metrics", "picard");
+        collectINS.addFile(outHS2);
+        
+        SqwFile outPDF = createOutputFile(outPdf, PDF_METATYPE, this.manualOutput);
+        outPDF.getAnnotations().put("Insert_size_pdf", "picard");
+        collectINS.addFile(outPDF);
+        
         SqwFile outHS1 = createOutputFile(outMetrics1, TXT_METATYPE, this.manualOutput);
         outHS1.getAnnotations().put("HS_metrics", "picard");
         collectHS.addFile(outHS1);
