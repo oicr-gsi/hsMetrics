@@ -60,7 +60,7 @@ public class HSMetricsWorkflow extends OicrWorkflow {
 
     
     // metatypes
-    private String TXT_METATYPE=" txt/plain";
+    private String TXT_METATYPE="txt/plain";
     private String PDF_METATYPE="application/pdf";
 
     private void init() {

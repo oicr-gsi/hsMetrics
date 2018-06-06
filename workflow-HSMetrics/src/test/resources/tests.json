@@ -13,8 +13,7 @@
                 "input_bam_file": "/.mounts/labs/PDE/data/testdata/genomic/bam/TGL_test/Sequenza/TGL01_0001_Sk_M_PE_426_EX.sorted.filter.deduped.realign.recal.bam",
                 "external_identifier": "INS-D-004-ST",
                 "bait_bed": "/.mounts/labs/PDE/data/interval-files/TargetedSequencingQC/Agilent.SureSelect.All.Exon.V5.UTRs/Agilent_SureSelectXT_Human_All_Exon_V5_UTRs.bed",
-                "target_intervals": "/.mounts/labs/PDE/data/interval-files/TargetedSequencingQC/Agilent.SureSelect.All.Exon.V5.UTRs/Agilent_SureSelectXT_Human_All_Exon_V5_UTRs.bed.interval_list",
-                "picard_jar": "${workflow_bundle_dir}/Workflow_Bundle_${workflow-directory-name}/${version}/bin/picard-tools-${picard-version}"
+                "target_intervals": "/.mounts/labs/PDE/data/interval-files/TargetedSequencingQC/Agilent.SureSelect.All.Exon.V5.UTRs/Agilent_SureSelectXT_Human_All_Exon_V5_UTRs.bed.interval_list"
             }
         },
         {
