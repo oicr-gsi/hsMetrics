@@ -7,7 +7,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>workflow-HSMetrics</module>
-        <module>decider-HSMetrics</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
