@@ -20,7 +20,8 @@
         {
             "id": "TGL17_EX",
             "parameters": {
-                "--study-name": "TGL17"
+                "--study-name": "TGL17",
+                "--template-type": "EX"
             }
         },
         {
