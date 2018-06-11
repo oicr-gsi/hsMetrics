@@ -256,6 +256,17 @@ public class HSMetricsDecider extends OicrDecider {
         return super.modifyIniFile(commaSeparatedFilePaths, commaSeparatedParentAccessions);
     }
 
+    public static void main(String args[]) {
+
+        List<String> params = new ArrayList<String>();
+        params.add("--plugin");
+        params.add(HSMetricsDecider.class.getCanonicalName());
+        params.add("--");
+        params.addAll(Arrays.asList(args));
+        System.out.println("Parameters: " + Arrays.deepToString(params.toArray()));
+        net.sourceforge.seqware.pipeline.runner.PluginRunner.main(params.toArray(new String[params.size()]));
+
+    }
 
 
     private class BeSmall {
