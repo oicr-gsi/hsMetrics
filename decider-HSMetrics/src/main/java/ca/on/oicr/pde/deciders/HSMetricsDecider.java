@@ -13,6 +13,7 @@ import net.sourceforge.seqware.common.hibernate.FindAllTheFiles.Header;
 import net.sourceforge.seqware.common.module.FileMetadata;
 import net.sourceforge.seqware.common.module.ReturnValue;
 import net.sourceforge.seqware.common.util.Log;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -235,11 +236,12 @@ public class HSMetricsDecider extends OicrDecider {
                 String tt = bs.getTissueType();
                 if (!tt.isEmpty()) {
                     Log.stdout("WRITING TO INI FILE ... " + bs.getPath());
+                    this.externalID = FilenameUtils.getBaseName(bs.getPath());
                     Map<String, String> iniFileMap = super.modifyIniFile(commaSeparatedFilePaths, commaSeparatedParentAccessions);
                     iniFileMap.put("input_bam_file", bs.getPath());
                     iniFileMap.put("data_dir", "data");
                     iniFileMap.put("template_type", this.templateType);
-                    iniFileMap.put("external_name", this.externalID);
+                    iniFileMap.put("external_identifier", this.externalID);
                     if (!this.queue.isEmpty()) {
                         iniFileMap.put("queue", this.queue);
                     }
