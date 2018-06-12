@@ -12,6 +12,7 @@
   "totalInputFiles" : 19,
   "workflowRuns" : [ {
     "workflowIni" : {
+      "coverage_cap" : "500",
       "data_dir" : "data",
       "external_identifier" : "TGL07_0001_Lu_M_WT_171121.merged.sorted.filter.deduped.split.realign.recal",
       "input_bam_file" : "/.mounts/labs/TGL/production2/seqware-results/BamMergePreprocessing_1.2/82939830/TGL07_0001_Lu_M_WT_171121.merged.sorted.filter.deduped.split.realign.recal.bam",
@@ -19,12 +20,14 @@
       "library" : "library",
       "manual_output" : "false",
       "metadata" : "metadata",
+      "minimum_pct" : "0.5",
       "output_dir" : "seqware-results",
       "picard_jar" : "/.mounts/labs/PDE/Modules/sw/picard/2.12.1/picard.jar",
       "picard_mem" : "30",
       "ref_dict" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.dict",
       "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa",
       "run" : "run",
+      "stringency_filter" : "LENIENT",
       "template_type" : "WT",
       "tmp_dir" : "tmp"
     },
@@ -69,6 +72,7 @@
     } ]
   }, {
     "workflowIni" : {
+      "coverage_cap" : "500",
       "data_dir" : "data",
       "external_identifier" : "TGL07_0002_Sb_P_WT_171121.merged.sorted.filter.deduped.split.realign.recal",
       "input_bam_file" : "/.mounts/labs/TGL/production2/seqware-results/BamMergePreprocessing_1.2/17354063/TGL07_0002_Sb_P_WT_171121.merged.sorted.filter.deduped.split.realign.recal.bam",
@@ -76,12 +80,14 @@
       "library" : "library",
       "manual_output" : "false",
       "metadata" : "metadata",
+      "minimum_pct" : "0.5",
       "output_dir" : "seqware-results",
       "picard_jar" : "/.mounts/labs/PDE/Modules/sw/picard/2.12.1/picard.jar",
       "picard_mem" : "30",
       "ref_dict" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.dict",
       "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa",
       "run" : "run",
+      "stringency_filter" : "LENIENT",
       "template_type" : "WT",
       "tmp_dir" : "tmp"
     },
@@ -126,6 +132,7 @@
     } ]
   }, {
     "workflowIni" : {
+      "coverage_cap" : "500",
       "data_dir" : "data",
       "external_identifier" : "TGL07_0003_Ut_P_WT_171121.merged.sorted.filter.deduped.split.realign.recal",
       "input_bam_file" : "/.mounts/labs/TGL/production2/seqware-results/BamMergePreprocessing_1.2/25203337/TGL07_0003_Ut_P_WT_171121.merged.sorted.filter.deduped.split.realign.recal.bam",
@@ -133,12 +140,14 @@
       "library" : "library",
       "manual_output" : "false",
       "metadata" : "metadata",
+      "minimum_pct" : "0.5",
       "output_dir" : "seqware-results",
       "picard_jar" : "/.mounts/labs/PDE/Modules/sw/picard/2.12.1/picard.jar",
       "picard_mem" : "30",
       "ref_dict" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.dict",
       "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa",
       "run" : "run",
+      "stringency_filter" : "LENIENT",
       "template_type" : "WT",
       "tmp_dir" : "tmp"
     },
@@ -183,6 +192,7 @@
     } ]
   }, {
     "workflowIni" : {
+      "coverage_cap" : "500",
       "data_dir" : "data",
       "external_identifier" : "TGL07_0004_Ov_P_WT_171121.merged.sorted.filter.deduped.split.realign.recal",
       "input_bam_file" : "/.mounts/labs/TGL/production2/seqware-results/BamMergePreprocessing_1.2/12841803/TGL07_0004_Ov_P_WT_171121.merged.sorted.filter.deduped.split.realign.recal.bam",
@@ -190,12 +200,14 @@
       "library" : "library",
       "manual_output" : "false",
       "metadata" : "metadata",
+      "minimum_pct" : "0.5",
       "output_dir" : "seqware-results",
       "picard_jar" : "/.mounts/labs/PDE/Modules/sw/picard/2.12.1/picard.jar",
       "picard_mem" : "30",
       "ref_dict" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.dict",
       "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa",
       "run" : "run",
+      "stringency_filter" : "LENIENT",
       "template_type" : "WT",
       "tmp_dir" : "tmp"
     },
@@ -240,6 +252,7 @@
     } ]
   }, {
     "workflowIni" : {
+      "coverage_cap" : "500",
       "data_dir" : "data",
       "external_identifier" : "TGL07_0005_Om_M_WT_171121.sorted.filter.deduped.split.realign.recal",
       "input_bam_file" : "/.mounts/labs/TGL/production2/seqware-results/BamMergePreprocessing_1.2/96925146/TGL07_0005_Om_M_WT_171121.sorted.filter.deduped.split.realign.recal.bam",
@@ -247,12 +260,14 @@
       "library" : "library",
       "manual_output" : "false",
       "metadata" : "metadata",
+      "minimum_pct" : "0.5",
       "output_dir" : "seqware-results",
       "picard_jar" : "/.mounts/labs/PDE/Modules/sw/picard/2.12.1/picard.jar",
       "picard_mem" : "30",
       "ref_dict" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.dict",
       "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa",
       "run" : "run",
+      "stringency_filter" : "LENIENT",
       "template_type" : "WT",
       "tmp_dir" : "tmp"
     },
@@ -297,6 +312,7 @@
     } ]
   }, {
     "workflowIni" : {
+      "coverage_cap" : "500",
       "data_dir" : "data",
       "external_identifier" : "TGL07_0006_Lv_M_WT_171121.sorted.filter.deduped.split.realign.recal",
       "input_bam_file" : "/.mounts/labs/TGL/production2/seqware-results/BamMergePreprocessing_1.2/19986507/TGL07_0006_Lv_M_WT_171121.sorted.filter.deduped.split.realign.recal.bam",
@@ -304,12 +320,14 @@
       "library" : "library",
       "manual_output" : "false",
       "metadata" : "metadata",
+      "minimum_pct" : "0.5",
       "output_dir" : "seqware-results",
       "picard_jar" : "/.mounts/labs/PDE/Modules/sw/picard/2.12.1/picard.jar",
       "picard_mem" : "30",
       "ref_dict" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.dict",
       "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa",
       "run" : "run",
+      "stringency_filter" : "LENIENT",
       "template_type" : "WT",
       "tmp_dir" : "tmp"
     },
@@ -354,6 +372,7 @@
     } ]
   }, {
     "workflowIni" : {
+      "coverage_cap" : "500",
       "data_dir" : "data",
       "external_identifier" : "TGL07_0007_Bn_M_WT_171121.sorted.filter.deduped.split.realign.recal",
       "input_bam_file" : "/.mounts/labs/TGL/production2/seqware-results/BamMergePreprocessing_1.2/54065800/TGL07_0007_Bn_M_WT_171121.sorted.filter.deduped.split.realign.recal.bam",
@@ -361,12 +380,14 @@
       "library" : "library",
       "manual_output" : "false",
       "metadata" : "metadata",
+      "minimum_pct" : "0.5",
       "output_dir" : "seqware-results",
       "picard_jar" : "/.mounts/labs/PDE/Modules/sw/picard/2.12.1/picard.jar",
       "picard_mem" : "30",
       "ref_dict" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.dict",
       "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa",
       "run" : "run",
+      "stringency_filter" : "LENIENT",
       "template_type" : "WT",
       "tmp_dir" : "tmp"
     },
@@ -411,6 +432,7 @@
     } ]
   }, {
     "workflowIni" : {
+      "coverage_cap" : "500",
       "data_dir" : "data",
       "external_identifier" : "TGL07_0008_Sk_P_WT_171121.sorted.filter.deduped.split.realign.recal",
       "input_bam_file" : "/.mounts/labs/TGL/production2/seqware-results/BamMergePreprocessing_1.2/20267230/TGL07_0008_Sk_P_WT_171121.sorted.filter.deduped.split.realign.recal.bam",
@@ -418,12 +440,14 @@
       "library" : "library",
       "manual_output" : "false",
       "metadata" : "metadata",
+      "minimum_pct" : "0.5",
       "output_dir" : "seqware-results",
       "picard_jar" : "/.mounts/labs/PDE/Modules/sw/picard/2.12.1/picard.jar",
       "picard_mem" : "30",
       "ref_dict" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.dict",
       "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa",
       "run" : "run",
+      "stringency_filter" : "LENIENT",
       "template_type" : "WT",
       "tmp_dir" : "tmp"
     },
@@ -468,6 +492,7 @@
     } ]
   }, {
     "workflowIni" : {
+      "coverage_cap" : "500",
       "data_dir" : "data",
       "external_identifier" : "TGL07_0009_Bl_P_WT_171121.sorted.filter.deduped.split.realign.recal",
       "input_bam_file" : "/.mounts/labs/TGL/production2/seqware-results/BamMergePreprocessing_1.2/24550562/TGL07_0009_Bl_P_WT_171121.sorted.filter.deduped.split.realign.recal.bam",
@@ -475,12 +500,14 @@
       "library" : "library",
       "manual_output" : "false",
       "metadata" : "metadata",
+      "minimum_pct" : "0.5",
       "output_dir" : "seqware-results",
       "picard_jar" : "/.mounts/labs/PDE/Modules/sw/picard/2.12.1/picard.jar",
       "picard_mem" : "30",
       "ref_dict" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.dict",
       "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa",
       "run" : "run",
+      "stringency_filter" : "LENIENT",
       "template_type" : "WT",
       "tmp_dir" : "tmp"
     },
@@ -525,6 +552,7 @@
     } ]
   }, {
     "workflowIni" : {
+      "coverage_cap" : "500",
       "data_dir" : "data",
       "external_identifier" : "TGL07_0010_Sb_M_WT_171122.sorted.filter.deduped.split.realign.recal",
       "input_bam_file" : "/.mounts/labs/TGL/production2/seqware-results/BamMergePreprocessing_1.2/92948682/TGL07_0010_Sb_M_WT_171122.sorted.filter.deduped.split.realign.recal.bam",
@@ -532,12 +560,14 @@
       "library" : "library",
       "manual_output" : "false",
       "metadata" : "metadata",
+      "minimum_pct" : "0.5",
       "output_dir" : "seqware-results",
       "picard_jar" : "/.mounts/labs/PDE/Modules/sw/picard/2.12.1/picard.jar",
       "picard_mem" : "30",
       "ref_dict" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.dict",
       "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa",
       "run" : "run",
+      "stringency_filter" : "LENIENT",
       "template_type" : "WT",
       "tmp_dir" : "tmp"
     },
@@ -582,6 +612,7 @@
     } ]
   }, {
     "workflowIni" : {
+      "coverage_cap" : "500",
       "data_dir" : "data",
       "external_identifier" : "TGL07_0011_Co_M_WT_171122.sorted.filter.deduped.split.realign.recal",
       "input_bam_file" : "/.mounts/labs/TGL/production2/seqware-results/BamMergePreprocessing_1.2/81969038/TGL07_0011_Co_M_WT_171122.sorted.filter.deduped.split.realign.recal.bam",
@@ -589,12 +620,14 @@
       "library" : "library",
       "manual_output" : "false",
       "metadata" : "metadata",
+      "minimum_pct" : "0.5",
       "output_dir" : "seqware-results",
       "picard_jar" : "/.mounts/labs/PDE/Modules/sw/picard/2.12.1/picard.jar",
       "picard_mem" : "30",
       "ref_dict" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.dict",
       "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa",
       "run" : "run",
+      "stringency_filter" : "LENIENT",
       "template_type" : "WT",
       "tmp_dir" : "tmp"
     },
@@ -639,6 +672,7 @@
     } ]
   }, {
     "workflowIni" : {
+      "coverage_cap" : "500",
       "data_dir" : "data",
       "external_identifier" : "TGL07_0012_Ln_M_WT_171121.sorted.filter.deduped.split.realign.recal",
       "input_bam_file" : "/.mounts/labs/TGL/production2/seqware-results/BamMergePreprocessing_1.2/91212579/TGL07_0012_Ln_M_WT_171121.sorted.filter.deduped.split.realign.recal.bam",
@@ -646,12 +680,14 @@
       "library" : "library",
       "manual_output" : "false",
       "metadata" : "metadata",
+      "minimum_pct" : "0.5",
       "output_dir" : "seqware-results",
       "picard_jar" : "/.mounts/labs/PDE/Modules/sw/picard/2.12.1/picard.jar",
       "picard_mem" : "30",
       "ref_dict" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.dict",
       "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa",
       "run" : "run",
+      "stringency_filter" : "LENIENT",
       "template_type" : "WT",
       "tmp_dir" : "tmp"
     },
@@ -696,6 +732,7 @@
     } ]
   }, {
     "workflowIni" : {
+      "coverage_cap" : "500",
       "data_dir" : "data",
       "external_identifier" : "TGL07_0014_Ce_P_WT_171121.sorted.filter.deduped.split.realign.recal",
       "input_bam_file" : "/.mounts/labs/TGL/production2/seqware-results/BamMergePreprocessing_1.2/6776516/TGL07_0014_Ce_P_WT_171121.sorted.filter.deduped.split.realign.recal.bam",
@@ -703,12 +740,14 @@
       "library" : "library",
       "manual_output" : "false",
       "metadata" : "metadata",
+      "minimum_pct" : "0.5",
       "output_dir" : "seqware-results",
       "picard_jar" : "/.mounts/labs/PDE/Modules/sw/picard/2.12.1/picard.jar",
       "picard_mem" : "30",
       "ref_dict" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.dict",
       "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa",
       "run" : "run",
+      "stringency_filter" : "LENIENT",
       "template_type" : "WT",
       "tmp_dir" : "tmp"
     },
@@ -753,6 +792,7 @@
     } ]
   }, {
     "workflowIni" : {
+      "coverage_cap" : "500",
       "data_dir" : "data",
       "external_identifier" : "TGL07_0015_Um_M_WT_171121.sorted.filter.deduped.split.realign.recal",
       "input_bam_file" : "/.mounts/labs/TGL/production2/seqware-results/BamMergePreprocessing_1.2/20277209/TGL07_0015_Um_M_WT_171121.sorted.filter.deduped.split.realign.recal.bam",
@@ -760,12 +800,14 @@
       "library" : "library",
       "manual_output" : "false",
       "metadata" : "metadata",
+      "minimum_pct" : "0.5",
       "output_dir" : "seqware-results",
       "picard_jar" : "/.mounts/labs/PDE/Modules/sw/picard/2.12.1/picard.jar",
       "picard_mem" : "30",
       "ref_dict" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.dict",
       "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa",
       "run" : "run",
+      "stringency_filter" : "LENIENT",
       "template_type" : "WT",
       "tmp_dir" : "tmp"
     },
@@ -810,6 +852,7 @@
     } ]
   }, {
     "workflowIni" : {
+      "coverage_cap" : "500",
       "data_dir" : "data",
       "external_identifier" : "TGL07_0016_Om_M_WT_171122.sorted.filter.deduped.split.realign.recal",
       "input_bam_file" : "/.mounts/labs/TGL/production2/seqware-results/BamMergePreprocessing_1.2/23080871/TGL07_0016_Om_M_WT_171122.sorted.filter.deduped.split.realign.recal.bam",
@@ -817,12 +860,14 @@
       "library" : "library",
       "manual_output" : "false",
       "metadata" : "metadata",
+      "minimum_pct" : "0.5",
       "output_dir" : "seqware-results",
       "picard_jar" : "/.mounts/labs/PDE/Modules/sw/picard/2.12.1/picard.jar",
       "picard_mem" : "30",
       "ref_dict" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.dict",
       "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa",
       "run" : "run",
+      "stringency_filter" : "LENIENT",
       "template_type" : "WT",
       "tmp_dir" : "tmp"
     },
@@ -867,6 +912,7 @@
     } ]
   }, {
     "workflowIni" : {
+      "coverage_cap" : "500",
       "data_dir" : "data",
       "external_identifier" : "TGL07_0017_Co_P_WT_171121.merged.sorted.filter.deduped.split.realign.recal",
       "input_bam_file" : "/.mounts/labs/TGL/production2/seqware-results/BamMergePreprocessing_1.2/4664925/TGL07_0017_Co_P_WT_171121.merged.sorted.filter.deduped.split.realign.recal.bam",
@@ -874,12 +920,14 @@
       "library" : "library",
       "manual_output" : "false",
       "metadata" : "metadata",
+      "minimum_pct" : "0.5",
       "output_dir" : "seqware-results",
       "picard_jar" : "/.mounts/labs/PDE/Modules/sw/picard/2.12.1/picard.jar",
       "picard_mem" : "30",
       "ref_dict" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.dict",
       "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa",
       "run" : "run",
+      "stringency_filter" : "LENIENT",
       "template_type" : "WT",
       "tmp_dir" : "tmp"
     },
@@ -924,6 +972,7 @@
     } ]
   }, {
     "workflowIni" : {
+      "coverage_cap" : "500",
       "data_dir" : "data",
       "external_identifier" : "TGL07_0018_Lv_M_WT_171121.sorted.filter.deduped.split.realign.recal",
       "input_bam_file" : "/.mounts/labs/TGL/production2/seqware-results/BamMergePreprocessing_1.2/78077407/TGL07_0018_Lv_M_WT_171121.sorted.filter.deduped.split.realign.recal.bam",
@@ -931,12 +980,14 @@
       "library" : "library",
       "manual_output" : "false",
       "metadata" : "metadata",
+      "minimum_pct" : "0.5",
       "output_dir" : "seqware-results",
       "picard_jar" : "/.mounts/labs/PDE/Modules/sw/picard/2.12.1/picard.jar",
       "picard_mem" : "30",
       "ref_dict" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.dict",
       "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa",
       "run" : "run",
+      "stringency_filter" : "LENIENT",
       "template_type" : "WT",
       "tmp_dir" : "tmp"
     },
@@ -981,6 +1032,7 @@
     } ]
   }, {
     "workflowIni" : {
+      "coverage_cap" : "500",
       "data_dir" : "data",
       "external_identifier" : "TGL07_0019_Ut_P_WT_171121.sorted.filter.deduped.split.realign.recal",
       "input_bam_file" : "/.mounts/labs/TGL/production2/seqware-results/BamMergePreprocessing_1.2/5927644/TGL07_0019_Ut_P_WT_171121.sorted.filter.deduped.split.realign.recal.bam",
@@ -988,12 +1040,14 @@
       "library" : "library",
       "manual_output" : "false",
       "metadata" : "metadata",
+      "minimum_pct" : "0.5",
       "output_dir" : "seqware-results",
       "picard_jar" : "/.mounts/labs/PDE/Modules/sw/picard/2.12.1/picard.jar",
       "picard_mem" : "30",
       "ref_dict" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.dict",
       "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa",
       "run" : "run",
+      "stringency_filter" : "LENIENT",
       "template_type" : "WT",
       "tmp_dir" : "tmp"
     },
@@ -1038,6 +1092,7 @@
     } ]
   }, {
     "workflowIni" : {
+      "coverage_cap" : "500",
       "data_dir" : "data",
       "external_identifier" : "TGL07_0020_Ag_M_WT_171121.sorted.filter.deduped.split.realign.recal",
       "input_bam_file" : "/.mounts/labs/TGL/production2/seqware-results/BamMergePreprocessing_1.2/63329014/TGL07_0020_Ag_M_WT_171121.sorted.filter.deduped.split.realign.recal.bam",
@@ -1045,12 +1100,14 @@
       "library" : "library",
       "manual_output" : "false",
       "metadata" : "metadata",
+      "minimum_pct" : "0.5",
       "output_dir" : "seqware-results",
       "picard_jar" : "/.mounts/labs/PDE/Modules/sw/picard/2.12.1/picard.jar",
       "picard_mem" : "30",
       "ref_dict" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.dict",
       "ref_fasta" : "/.mounts/labs/PDE/data/gatkAnnotationResources/hg19_random.fa",
       "run" : "run",
+      "stringency_filter" : "LENIENT",
       "template_type" : "WT",
       "tmp_dir" : "tmp"
     },
