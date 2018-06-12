@@ -37,6 +37,11 @@ public class HSMetricsWorkflow extends OicrWorkflow {
     private String java;
     private String picard;
 //    private String bedtools;
+    //picard
+    
+    private String minpct;
+    private String coverageCap;
+    private String lenient;
     
 
 
@@ -87,6 +92,10 @@ public class HSMetricsWorkflow extends OicrWorkflow {
             targetBed = getOptionalProperty("target_bed", this.baitBed);
             refDict = getProperty("ref_dict");
             
+            //picard
+            coverageCap = getOptionalProperty("coverage_cap","500");
+            lenient = getOptionalProperty("stringency_filter", "LENIENT");
+            minpct = getOptionalProperty("minimum_pct", "0.5");
 
             manualOutput = Boolean.parseBoolean(getProperty("manual_output"));
             queue = getOptionalProperty("queue", "");
@@ -191,8 +200,8 @@ public class HSMetricsWorkflow extends OicrWorkflow {
         cmd.addArgument("R="+this.refFasta);
         cmd.addArgument("INPUT=" + inBam);
         cmd.addArgument("OUTPUT=" + outMetrics);
-        cmd.addArgument("COVERAGE_CAP=500");
-        cmd.addArgument("VALIDATION_STRINGENCY=LENIENT");
+        cmd.addArgument("COVERAGE_CAP=" + this.coverageCap);
+        cmd.addArgument("VALIDATION_STRINGENCY="+ this.lenient);
         collectHSMetrics.setMaxMemory(Integer.toString(this.picardMem * 1024));
         collectHSMetrics.setQueue(getOptionalProperty("queue", ""));
         return collectHSMetrics;
@@ -207,7 +216,7 @@ public class HSMetricsWorkflow extends OicrWorkflow {
         cmd.addArgument("I="+ inBam);
         cmd.addArgument("O=" + outMetrics);
         cmd.addArgument("H=" + outPdf);
-        cmd.addArgument("M=0.5");
+        cmd.addArgument("M=" + this.minpct);
         collectInsertMetrics.setMaxMemory(Integer.toString(this.picardMem * 1024));
         collectInsertMetrics.setQueue(getOptionalProperty("queue", ""));
         return collectInsertMetrics;

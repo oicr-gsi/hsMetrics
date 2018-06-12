@@ -28,6 +28,10 @@ public class HSMetricsDecider extends OicrDecider {
     private String templateType = null;
     private String queue = "";
     private String externalID;
+    private int coverageCap = 500;
+    private float minPCT = (float) 0.5;
+    private String stringency = "LENIENT";
+    
 
     private final static String BAM_METATYPE = "application/bam";
     private String tumorType;
@@ -245,7 +249,9 @@ public class HSMetricsDecider extends OicrDecider {
                     if (!this.queue.isEmpty()) {
                         iniFileMap.put("queue", this.queue);
                     }
-
+                    iniFileMap.put("coverage_cap", Integer.toString(this.coverageCap));
+                    iniFileMap.put("stringency_filter",this.stringency);
+                    iniFileMap.put("minimum_pct",Float.toString(this.minPCT));
                     return iniFileMap;
                 }
                 else{
