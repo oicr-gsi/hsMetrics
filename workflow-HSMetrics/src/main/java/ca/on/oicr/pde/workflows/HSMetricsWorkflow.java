@@ -47,7 +47,7 @@ public class HSMetricsWorkflow extends OicrWorkflow {
 
     //Memory allocation
     private Integer picardMem;
-    private String javaMem = "-Xmx16g";
+    private String javaMem;
 
 
 
@@ -101,6 +101,7 @@ public class HSMetricsWorkflow extends OicrWorkflow {
             queue = getOptionalProperty("queue", "");
 
             picardMem = Integer.parseInt(getProperty("picard_mem"));
+            javaMem = getOptionalProperty("java_mem","-Xmx16g");
 
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -136,7 +137,7 @@ public class HSMetricsWorkflow extends OicrWorkflow {
     @Override
     public void buildWorkflow() {
         Job parentJob = null;
-        this.outDir = this.outputFilenamePrefix + "_output/";
+//        this.outDir = this.outputFilenamePrefix + "_output/";
         String inBam = getFiles().get("inBam").getProvisionedPath();
         
         String outMetrics1 = this.dataDir + this.outputFilenamePrefix + ".HS";
