@@ -14,7 +14,7 @@
     "workflowIni" : {
       "coverage_cap" : "500",
       "data_dir" : "data",
-      "external_identifier" : "TGL17_0001_Co_P_WT_180413.sorted.filter.deduped.split.realign.recal",
+      "output_filename_prefix" : "TGL17_0001_Co_P_WT_180413.sorted.filter.deduped.split.realign.recal",
       "input_bam_file" : "/.mounts/labs/TGL/production2/seqware-results/BamMergePreprocessing_1.2/79004662/TGL17_0001_Co_P_WT_180413.sorted.filter.deduped.split.realign.recal.bam",
       "java" : "/.mounts/labs/PDE/Modules/sw/jvm/jdk1.8.0_91/bin/java",
       "java_mem" : "-Xmx16g",
@@ -75,7 +75,7 @@
     "workflowIni" : {
       "coverage_cap" : "500",
       "data_dir" : "data",
-      "external_identifier" : "TGL17_0001_Lv_M_WT_180413.merged.sorted.filter.deduped.split.realign.recal",
+      "output_filename_prefix" : "TGL17_0001_Lv_M_WT_180413.merged.sorted.filter.deduped.split.realign.recal",
       "input_bam_file" : "/.mounts/labs/TGL/production2/seqware-results/BamMergePreprocessing_1.2/79004662/TGL17_0001_Lv_M_WT_180413.merged.sorted.filter.deduped.split.realign.recal.bam",
       "java" : "/.mounts/labs/PDE/Modules/sw/jvm/jdk1.8.0_91/bin/java",
       "java_mem" : "-Xmx16g",
@@ -136,7 +136,7 @@
     "workflowIni" : {
       "coverage_cap" : "500",
       "data_dir" : "data",
-      "external_identifier" : "TGL17_0002_Lv_M_WT_180413.sorted.filter.deduped.split.realign.recal",
+      "output_filename_prefix" : "TGL17_0002_Lv_M_WT_180413.sorted.filter.deduped.split.realign.recal",
       "input_bam_file" : "/.mounts/labs/TGL/production2/seqware-results/BamMergePreprocessing_1.2/65619421/TGL17_0002_Lv_M_WT_180413.sorted.filter.deduped.split.realign.recal.bam",
       "java" : "/.mounts/labs/PDE/Modules/sw/jvm/jdk1.8.0_91/bin/java",
       "java_mem" : "-Xmx16g",
@@ -197,7 +197,7 @@
     "workflowIni" : {
       "coverage_cap" : "500",
       "data_dir" : "data",
-      "external_identifier" : "TGL17_0003_Co_P_WT_180413.sorted.filter.deduped.split.realign.recal",
+      "output_filename_prefix" : "TGL17_0003_Co_P_WT_180413.sorted.filter.deduped.split.realign.recal",
       "input_bam_file" : "/.mounts/labs/TGL/production2/seqware-results/BamMergePreprocessing_1.2/48989718/TGL17_0003_Co_P_WT_180413.sorted.filter.deduped.split.realign.recal.bam",
       "java" : "/.mounts/labs/PDE/Modules/sw/jvm/jdk1.8.0_91/bin/java",
       "java_mem" : "-Xmx16g",
@@ -258,7 +258,7 @@
     "workflowIni" : {
       "coverage_cap" : "500",
       "data_dir" : "data",
-      "external_identifier" : "TGL17_0004_Lv_M_WT_180413.merged.sorted.filter.deduped.split.realign.recal",
+      "output_filename_prefix" : "TGL17_0004_Lv_M_WT_180413.merged.sorted.filter.deduped.split.realign.recal",
       "input_bam_file" : "/.mounts/labs/TGL/production2/seqware-results/BamMergePreprocessing_1.2/972772/TGL17_0004_Lv_M_WT_180413.merged.sorted.filter.deduped.split.realign.recal.bam",
       "java" : "/.mounts/labs/PDE/Modules/sw/jvm/jdk1.8.0_91/bin/java",
       "java_mem" : "-Xmx16g",

@@ -245,7 +245,7 @@ public class HSMetricsDecider extends OicrDecider {
                     iniFileMap.put("input_bam_file", bs.getPath());
                     iniFileMap.put("data_dir", "data");
                     iniFileMap.put("template_type", this.templateType);
-                    iniFileMap.put("external_identifier", this.externalID);
+                    iniFileMap.put("output_filename_prefix", this.externalID);
                     if (!this.queue.isEmpty()) {
                         iniFileMap.put("queue", this.queue);
                     }

@@ -78,7 +78,7 @@ public class HSMetricsWorkflow extends OicrWorkflow {
             inputBam = getProperty("input_bam_file");
             
             //
-            outputFilenamePrefix = getProperty("external_identifier");
+            outputFilenamePrefix = getProperty("output_filename_prefix");
 
             //tools
             java = getProperty("java");
