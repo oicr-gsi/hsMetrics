@@ -27,7 +27,7 @@ public class HSMetricsDecider extends OicrDecider {
 
     private String templateType = null;
     private String queue = "";
-    private String externalID;
+    private String baseName;
     private int coverageCap = 500;
     private float minPCT = (float) 0.5;
     private String stringency = "LENIENT";
@@ -94,13 +94,9 @@ public class HSMetricsDecider extends OicrDecider {
         boolean haveBam = false;
 
         // Check for duplicate file names and exclude them from analysis
-//        this.duplicates = detectDuplicates(commaSeparatedFilePaths);
 
         for (String p : filePaths) {
-//            if (null != this.duplicates && this.duplicates.contains(p)) {
-//                Log.stderr("File [" + p + "] has a name that cannot be disambiguated in current set, will skip it");
-//                continue;
-//            }
+
             for (BeSmall bs : fileSwaToSmall.values()) {
                 if (!bs.getPath().equals(p)) {
                     continue;
@@ -223,14 +219,7 @@ public class HSMetricsDecider extends OicrDecider {
     protected Map<String, String> modifyIniFile(String commaSeparatedFilePaths, String commaSeparatedParentAccessions) {
 
         String[] filePaths = commaSeparatedFilePaths.split(",");
-
-
-
         for (String p : filePaths) {
-//            if (null != this.duplicates && this.duplicates.contains(p)) {
-//                Log.stderr("Will not include file [" + p + "] since there is an ambiguity in names that cannot be resolved");
-//                continue;
-//            }
 
             for (BeSmall bs : fileSwaToSmall.values()) {
                 if (!bs.getPath().equals(p)) {
@@ -240,12 +229,12 @@ public class HSMetricsDecider extends OicrDecider {
                 String tt = bs.getTissueType();
                 if (!tt.isEmpty()) {
                     Log.stdout("WRITING TO INI FILE ... " + bs.getPath());
-                    this.externalID = FilenameUtils.getBaseName(bs.getPath());
+                    this.baseName = FilenameUtils.getBaseName(bs.getPath());
                     Map<String, String> iniFileMap = super.modifyIniFile(commaSeparatedFilePaths, commaSeparatedParentAccessions);
                     iniFileMap.put("input_bam_file", bs.getPath());
                     iniFileMap.put("data_dir", "data");
                     iniFileMap.put("template_type", this.templateType);
-                    iniFileMap.put("output_filename_prefix", this.externalID);
+                    iniFileMap.put("output_filename_prefix", this.baseName);
                     if (!this.queue.isEmpty()) {
                         iniFileMap.put("queue", this.queue);
                     }
@@ -287,6 +276,7 @@ public class HSMetricsDecider extends OicrDecider {
         private String extName = null;
         private String groupID = null;
         private String groupDescription = null;
+        private String workflowName = null;
 
         public BeSmall(ReturnValue rv) {
             try {
@@ -296,10 +286,10 @@ public class HSMetricsDecider extends OicrDecider {
                 ex.printStackTrace();
             }
             FileAttributes fa = new FileAttributes(rv, rv.getFiles().get(0));
-            iusDetails = fa.getLibrarySample() + fa.getSequencerRun() + fa.getLane() + fa.getBarcode();
+            workflowName = rv.getAttribute(Header.WORKFLOW_NAME.getTitle());
+            iusDetails = fa.getLibrarySample() + fa.getSequencerRun() + fa.getLane() + fa.getBarcode() + workflowName;
             tissueType = fa.getLimsValue(Lims.TISSUE_TYPE);
             extName = rv.getAttribute(Header.SAMPLE_TAG_PREFIX.getTitle() + "geo_external_name");
-            //fa.getLimsValue(Lims.TUBE_ID);
             if (null == extName || extName.isEmpty()) {
                 extName = "NA";
             }
@@ -363,26 +353,6 @@ public class HSMetricsDecider extends OicrDecider {
             this.path = path;
         }
     }
-
-//    public static List<String> detectDuplicates(String commaSeparatedFilePaths) {
-//
-//        String[] filePaths = commaSeparatedFilePaths.split(",");
-//        List<String> list = new ArrayList<String>();
-//        List<String> checker = new ArrayList<String>();
-//
-//        for (String path : filePaths) {
-//            String baseName = makeBasename(path, ".bam");
-//
-//            if (checker.contains(baseName) && !list.contains(path)) {
-//                list.add(path);
-//            } else {
-//                checker.add(baseName);
-//            }
-//        }
-//
-//        return list.isEmpty() ? null : list;
-//
-//    }
 
     /**
      * Utility function
