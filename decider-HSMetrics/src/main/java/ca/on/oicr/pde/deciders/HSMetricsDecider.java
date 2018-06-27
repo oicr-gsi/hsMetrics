@@ -108,9 +108,9 @@ public class HSMetricsDecider extends OicrDecider {
                 }
             }
         }
-        if (haveBam) {
+        if (haveBam && (filePaths.length == 1)) { // check one file per filePaths
             return super.doFinalCheck(commaSeparatedFilePaths, commaSeparatedParentAccessions);
-        }
+        } 
         Log.error("Data not available, WON'T RUN");
         return new ReturnValue(ReturnValue.INVALIDPARAMETERS);
     }
@@ -219,38 +219,40 @@ public class HSMetricsDecider extends OicrDecider {
     protected Map<String, String> modifyIniFile(String commaSeparatedFilePaths, String commaSeparatedParentAccessions) {
 
         String[] filePaths = commaSeparatedFilePaths.split(",");
+        String inputBam = new String();
         for (String p : filePaths) {
-
             for (BeSmall bs : fileSwaToSmall.values()) {
                 if (!bs.getPath().equals(p)) {
                     continue;
                 }
-
                 String tt = bs.getTissueType();
                 if (!tt.isEmpty()) {
                     Log.stdout("WRITING TO INI FILE ... " + bs.getPath());
                     this.baseName = FilenameUtils.getBaseName(bs.getPath());
-                    Map<String, String> iniFileMap = super.modifyIniFile(commaSeparatedFilePaths, commaSeparatedParentAccessions);
-                    iniFileMap.put("input_bam_file", bs.getPath());
-                    iniFileMap.put("data_dir", "data");
-                    iniFileMap.put("template_type", this.templateType);
-                    iniFileMap.put("output_filename_prefix", this.baseName);
-                    if (!this.queue.isEmpty()) {
-                        iniFileMap.put("queue", this.queue);
-                    }
-                    iniFileMap.put("coverage_cap", Integer.toString(this.coverageCap));
-                    iniFileMap.put("stringency_filter",this.stringency);
-                    iniFileMap.put("minimum_pct",Float.toString(this.minPCT));
-                    return iniFileMap;
-                }
+                    inputBam = bs.getPath();
+                }  
                 else{
                     Log.error("THE DONOR does not have data to run the workflow");
                     abortSchedulingOfCurrentWorkflowRun();
                 }
             }
         }
+        Map<String, String> iniFileMap = super.modifyIniFile(commaSeparatedFilePaths, commaSeparatedParentAccessions);
+        iniFileMap.put("input_bam_file", inputBam);
+        iniFileMap.put("data_dir", "data");
+        iniFileMap.put("template_type", this.templateType);
+        iniFileMap.put("output_filename_prefix", this.baseName);
 
-        return super.modifyIniFile(commaSeparatedFilePaths, commaSeparatedParentAccessions);
+        if (!this.queue.isEmpty()) {
+            iniFileMap.put("queue", this.queue);
+        }
+        iniFileMap.put("coverage_cap", Integer.toString(this.coverageCap));
+        iniFileMap.put("stringency_filter", this.stringency);
+        iniFileMap.put("minimum_pct", Float.toString(this.minPCT));
+        return iniFileMap;
+                
+
+//        return super.modifyIniFile(commaSeparatedFilePaths, commaSeparatedParentAccessions);
     }
 
     public static void main(String args[]) {
