@@ -34,7 +34,8 @@ public class HSMetricsDecider extends OicrDecider {
     private int javaMem = 16;
     private String baitBed;
     private String targetBed;
-    
+    private String refFasta;
+    private String refDict;
 
     private final static String BAM_METATYPE = "application/bam";
     private String tumorType;
@@ -53,6 +54,8 @@ public class HSMetricsDecider extends OicrDecider {
         parser.accepts("java-mem-gb", "Optional: Specify java memory in GBs").withOptionalArg();
         parser.accepts("bait-file", "Required. Specify bait file, in bed format").withRequiredArg();
         parser.accepts("target-file", "Required. Specify target file, in bed format").withRequiredArg();
+        parser.accepts("ref-fasta", "Required. Specify reference fasta").withRequiredArg();
+        parser.accepts("ref-dict", "Required. Specify reference fasta dict").withRequiredArg();
     }
 
     @Override
@@ -106,6 +109,11 @@ public class HSMetricsDecider extends OicrDecider {
             return rv;
         } else {
             this.baitBed = this.options.valueOf("bait-file").toString();
+            if (this.baitBed == null){
+                Log.error("--bait-file contains NULL");
+            rv.setExitStatus(ReturnValue.INVALIDARGUMENT);
+            return rv;
+            }
         }
         
         if (!this.options.has("target-file")){
@@ -114,7 +122,39 @@ public class HSMetricsDecider extends OicrDecider {
             return rv;
         } else {
             this.targetBed = this.options.valueOf("target-file").toString();
+            if (this.targetBed == null){
+                Log.error("--target-file contains NULL");
+            rv.setExitStatus(ReturnValue.INVALIDARGUMENT);
+            return rv;
+            }
         }
+        
+        if (!this.options.has("ref-fasta")){
+            Log.error("--ref-fasta requires a target bed file");
+            rv.setExitStatus(ReturnValue.INVALIDARGUMENT);
+            return rv;
+        } else {
+            this.refFasta = this.options.valueOf("ref-fasta").toString();
+            if (this.refFasta == null){
+                Log.error("--ref-fasta contains NULL");
+            rv.setExitStatus(ReturnValue.INVALIDARGUMENT);
+            return rv;
+            }
+        }
+        
+        if (!this.options.has("ref-dict")){
+            Log.error("--ref-dict requires a target bed file");
+            rv.setExitStatus(ReturnValue.INVALIDARGUMENT);
+            return rv;
+        } else {
+            this.refDict = this.options.valueOf("ref-dict").toString();
+            if (this.refDict == null){
+                Log.error("--ref-dict contains NULL");
+            rv.setExitStatus(ReturnValue.INVALIDARGUMENT);
+            return rv;
+            }
+        }
+        
 
         return rv;
     }
