@@ -35,8 +35,7 @@ public class HSMetricsDecider extends OicrDecider {
 
     private final static String BAM_METATYPE = "application/bam";
     private String tumorType;
-//    private String templateType;
-//    private List<String> duplicates;
+
 
     public HSMetricsDecider() {
         super();
@@ -46,6 +45,9 @@ public class HSMetricsDecider extends OicrDecider {
                 + "so that it runs on data only of this template type").withRequiredArg();
         parser.accepts("queue", "Optional: Set the queue (Default: not set)").withRequiredArg();
         parser.accepts("tumor-type", "Optional: Set tumor tissue type to something other than primary tumor (P), i.e. X . Default: Not set (All)").withRequiredArg();
+        parser.accepts("minimum-pct", "Optional: Specify minimum percentage for overal reads").withOptionalArg();
+        parser.accepts("coverage-cap", "Optional: Specify maximum coverage limit").withOptionalArg();
+        parser.accepts("validation-stringency", "Optional: Specify VALIDATION_STRINGENCY ; STRICT, LENIENT, SILENT").withOptionalArg();
     }
 
     @Override
@@ -75,6 +77,18 @@ public class HSMetricsDecider extends OicrDecider {
                 rv.setExitStatus(ReturnValue.INVALIDARGUMENT);
                 return rv;
             }
+        }
+        
+        if (this.options.has("coverage-cap")) {
+            this.coverageCap = Integer.parseInt(options.valueOf("coverage-cap").toString());
+        }
+        
+        if (this.options.has("minimim-pct")) {
+            this.minPCT = Float.parseFloat(options.valueOf("minimum-pct").toString());
+        }
+        
+        if (this.options.has("validation-stringency")) {
+            this.stringency = options.valueOf("validation-stringency").toString();
         }
 
         return rv;
