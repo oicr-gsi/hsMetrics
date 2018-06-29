@@ -32,6 +32,8 @@ public class HSMetricsDecider extends OicrDecider {
     private float minPCT = (float) 0.5;
     private String stringency = "LENIENT";
     private int javaMem = 16;
+    private String baitBed;
+    private String targetBed;
     
 
     private final static String BAM_METATYPE = "application/bam";
@@ -45,11 +47,12 @@ public class HSMetricsDecider extends OicrDecider {
         parser.accepts("template-type", "Required. Set the template type to limit the workflow run "
                 + "so that it runs on data only of this template type").withRequiredArg();
         parser.accepts("queue", "Optional: Set the queue (Default: not set)").withRequiredArg();
-        parser.accepts("tumor-type", "Optional: Set tumor tissue type to something other than primary tumor (P), i.e. X . Default: Not set (All)").withRequiredArg();
         parser.accepts("minimum-pct", "Optional: Specify minimum percentage for overal reads").withOptionalArg();
         parser.accepts("coverage-cap", "Optional: Specify maximum coverage limit").withOptionalArg();
         parser.accepts("validation-stringency", "Optional: Specify VALIDATION_STRINGENCY ; STRICT, LENIENT, SILENT").withOptionalArg();
         parser.accepts("java-mem-gb", "Optional: Specify java memory in GBs").withOptionalArg();
+        parser.accepts("bait-file", "Required. Specify bait file, in bed format").withRequiredArg();
+        parser.accepts("target-file", "Required. Specify target file, in bed format").withRequiredArg();
     }
 
     @Override
@@ -95,6 +98,22 @@ public class HSMetricsDecider extends OicrDecider {
         
         if (this.options.has("java-mem-gb")){
             this.javaMem = Integer.parseInt(options.valueOf("java-mem-gb").toString());
+        }
+        
+        if (!this.options.has("bait-file")){
+            Log.error("--bait-file requires a bait bed file");
+            rv.setExitStatus(ReturnValue.INVALIDARGUMENT);
+            return rv;
+        } else {
+            this.baitBed = this.options.valueOf("bait-file").toString();
+        }
+        
+        if (!this.options.has("target-file")){
+            Log.error("--target-file requires a target bed file");
+            rv.setExitStatus(ReturnValue.INVALIDARGUMENT);
+            return rv;
+        } else {
+            this.targetBed = this.options.valueOf("target-file").toString();
         }
 
         return rv;
@@ -270,6 +289,8 @@ public class HSMetricsDecider extends OicrDecider {
         iniFileMap.put("stringency_filter", this.stringency);
         iniFileMap.put("minimum_pct", Float.toString(this.minPCT));
         iniFileMap.put("java_mem", "Xmx" + Integer.toString(this.javaMem) + "gs");
+        iniFileMap.put("target_bed", this.targetBed);
+        iniFileMap.put("bait_bed", this.baitBed);
         return iniFileMap;
                 
 
