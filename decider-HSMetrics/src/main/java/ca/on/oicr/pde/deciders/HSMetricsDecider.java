@@ -31,6 +31,7 @@ public class HSMetricsDecider extends OicrDecider {
     private int coverageCap = 500;
     private float minPCT = (float) 0.5;
     private String stringency = "LENIENT";
+    private int javaMem = 16;
     
 
     private final static String BAM_METATYPE = "application/bam";
@@ -48,6 +49,7 @@ public class HSMetricsDecider extends OicrDecider {
         parser.accepts("minimum-pct", "Optional: Specify minimum percentage for overal reads").withOptionalArg();
         parser.accepts("coverage-cap", "Optional: Specify maximum coverage limit").withOptionalArg();
         parser.accepts("validation-stringency", "Optional: Specify VALIDATION_STRINGENCY ; STRICT, LENIENT, SILENT").withOptionalArg();
+        parser.accepts("java-mem-gb", "Optional: Specify java memory in GBs").withOptionalArg();
     }
 
     @Override
@@ -89,6 +91,10 @@ public class HSMetricsDecider extends OicrDecider {
         
         if (this.options.has("validation-stringency")) {
             this.stringency = options.valueOf("validation-stringency").toString();
+        }
+        
+        if (this.options.has("java-mem-gb")){
+            this.javaMem = Integer.parseInt(options.valueOf("java-mem-gb").toString());
         }
 
         return rv;
@@ -263,6 +269,7 @@ public class HSMetricsDecider extends OicrDecider {
         iniFileMap.put("coverage_cap", Integer.toString(this.coverageCap));
         iniFileMap.put("stringency_filter", this.stringency);
         iniFileMap.put("minimum_pct", Float.toString(this.minPCT));
+        iniFileMap.put("java_mem", "Xmx" + Integer.toString(this.javaMem) + "gs");
         return iniFileMap;
                 
 
