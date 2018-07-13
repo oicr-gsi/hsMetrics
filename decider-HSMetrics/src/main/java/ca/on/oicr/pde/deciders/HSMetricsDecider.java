@@ -328,7 +328,7 @@ public class HSMetricsDecider extends OicrDecider {
         iniFileMap.put("coverage_cap", Integer.toString(this.coverageCap));
         iniFileMap.put("stringency_filter", this.stringency);
         iniFileMap.put("minimum_pct", Float.toString(this.minPCT));
-        iniFileMap.put("java_mem", "Xmx" + Integer.toString(this.javaMem) + "gs");
+        iniFileMap.put("java_mem", "-Xmx" + Integer.toString(this.javaMem) + "g");
         iniFileMap.put("target_bed", this.targetBed);
         iniFileMap.put("bait_bed", this.baitBed);
         return iniFileMap;
