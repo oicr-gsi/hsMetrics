@@ -99,7 +99,7 @@ input {
         Int?   jobMemory   = 16
         Int?   javaMemory  = 12
         Int?   coverageCap = 500
-        String? modules    = "java/8 picard/2.19.2 hg19/p13 rstats/3.6"
+        String? modules    = "java/8 picard/2.19.2 hg19/p13"
 }
 
 command <<<
@@ -136,7 +136,7 @@ input {
         Int?    javaMemory = 12
         Float?  minPct     = 0.5
         String? outputPrefix = ""
-        String? modules    = "java/8 picard/2.19.2"
+        String? modules    = "java/8 rstats/3.6 picard/2.19.2"
 }
 
 command <<<
