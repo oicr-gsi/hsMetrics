@@ -1,6 +1,6 @@
 version 1.0
 
-workflow hsmetricsWorkflow {
+workflow hsMetrics {
 input {
     File    inputBam
     File    baitBed
