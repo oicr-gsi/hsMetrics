@@ -33,7 +33,7 @@ output {
 task makeRefDictionary {
 input {
         String refFasta
-        Int?   jobMemory  = 12
+        Int?   jobMemory  = 18
         Int?   javaMemory = 10
         String? modules   = "java/8 picard/2.19.2 hg19/p13"
 }
@@ -61,7 +61,7 @@ task bedToIntervals {
 input {
 	File   inputBed
         File   refDict       
-        Int?   jobMemory  = 16
+        Int?   jobMemory  = 18
         Int?   javaMemory = 12
         String? modules   = "java/8 picard/2.19.2" 
 }
@@ -96,7 +96,7 @@ input {
         String? metricTag  = "HS"
         String? filter     = "LENIENT"
         String? outputPrefix = ""
-        Int?   jobMemory   = 16
+        Int?   jobMemory   = 18
         Int?   javaMemory  = 12
         Int?   coverageCap = 500
         String? modules    = "java/8 picard/2.19.2 hg19/p13"
@@ -132,7 +132,7 @@ task collectInsertMetrics {
 input {
         File    inputBam
         String? metricTag  = "INS"
-        Int?    jobMemory  = 16
+        Int?    jobMemory  = 18
         Int?    javaMemory = 12
         Float?  minPct     = 0.5
         String? outputPrefix = ""
