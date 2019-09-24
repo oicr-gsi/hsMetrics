@@ -17,11 +17,11 @@
             "id": "test_01_picard_with_bed_files",
             "parameters": {
               "wdl_inputs": {
-                "hsmetricsWorkflow.refFasta": "$HG19_ROOT/hg19_random.fa",
-                "hsmetricsWorkflow.inputBam": "/.mounts/labs/PDE/data/testdata/genomic/bam/TGL_test/Sequenza/TGL01_0001_Sk_M_PE_426_EX.sorted.filter.deduped.realign.recal.bam",
-                "hsmetricsWorkflow.outputPrefix": ".INS-D-004-ST",
-                "hsmetricsWorkflow.baitBed":"/.mounts/labs/PDE/data/interval-files/TargetedSequencingQC/Agilent.SureSelect.All.Exon.V5.UTRs/Agilent_SureSelectXT_Human_All_Exon_V5_UTRs.bed",
-                "hsmetricsWorkflow.targetBed":"/.mounts/labs/PDE/data/interval-files/TargetedSequencingQC/Agilent.SureSelect.All.Exon.V5.UTRs/Agilent_SureSelectXT_Human_All_Exon_V5_UTRs.bed"
+                "hsMetrics.refFasta": "$HG19_ROOT/hg19_random.fa",
+                "hsMetrics.inputBam": "/.mounts/labs/PDE/data/testdata/genomic/bam/TGL_test/Sequenza/TGL01_0001_Sk_M_PE_426_EX.sorted.filter.deduped.realign.recal.bam",
+                "hsMetrics.outputPrefix": ".INS-D-004-ST",
+                "hsMetrics.baitBed":"/.mounts/labs/PDE/data/interval-files/TargetedSequencingQC/Agilent.SureSelect.All.Exon.V5.UTRs/Agilent_SureSelectXT_Human_All_Exon_V5_UTRs.bed",
+                "hsMetrics.targetBed":"/.mounts/labs/PDE/data/interval-files/TargetedSequencingQC/Agilent.SureSelect.All.Exon.V5.UTRs/Agilent_SureSelectXT_Human_All_Exon_V5_UTRs.bed"
               }
             }
         }
