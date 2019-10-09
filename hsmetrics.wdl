@@ -147,7 +147,7 @@ runtime {
 }
 
 output {
-  File outputHSMetrics = "~{outputPrefix}.~{metricTag}"
+  File outputHSMetrics = "~{outputPrefix}.~{metricTag}.txt"
 }
 }
 
@@ -168,7 +168,7 @@ input {
 command <<<
  java -Xmx~{jobMemory-6}G -jar $PICARD_ROOT/picard.jar CollectInsertSizeMetrics \
                               INPUT=~{inputBam} \
-                              OUTPUT="~{outputPrefix}.~{metricTag}" \
+                              OUTPUT="~{outputPrefix}.~{metricTag}.txt" \
                               H="~{outputPrefix}.~{metricTag}.PDF" \
                               M=~{minPct}
 >>>
