@@ -124,7 +124,7 @@ command <<<
                               R=~{refFasta} \
                               COVERAGE_CAP=~{coverageCap} \
                               INPUT=~{inputBam} \
-                              OUTPUT="~{outputPrefix}.~{metricTag}" \
+                              OUTPUT="~{outputPrefix}.~{metricTag}.txt" \
                               VALIDATION_STRINGENCY=~{filter} 
 >>>
 
@@ -188,7 +188,7 @@ runtime {
 }
 
 output {
-  File outputINSMetrics = "~{outputPrefix}.~{metricTag}"
+  File outputINSMetrics = "~{outputPrefix}.~{metricTag}.txt"
   File outputINSPDF     = "~{outputPrefix}.~{metricTag}.PDF"
 }
 }
