@@ -10,9 +10,8 @@ input {
 
 String? outputPrefix = if outputFileNamePrefix=="" then basename(inputBam, '.bam') else outputFileNamePrefix
 
-call makeRefDictionary {}
-call bedToIntervals as bedToTargetIntervals { input: inputBed = targetBed, refDict = makeRefDictionary.refDict }
-call bedToIntervals as bedToBaitIntervals { input: inputBed = baitBed, refDict = makeRefDictionary.refDict }
+call bedToIntervals as bedToTargetIntervals { input: inputBed = targetBed }
+call bedToIntervals as bedToBaitIntervals { input: inputBed = baitBed }
 
 call collectHSmetrics{ input: inputBam = inputBam, baitIntervals = bedToBaitIntervals.outputIntervals, targetIntervals = bedToTargetIntervals.outputIntervals, outputPrefix = outputPrefix }
 call collectInsertMetrics{ input: inputBam = inputBam, outputPrefix = outputPrefix }
@@ -32,46 +31,14 @@ output {
 }
 
 # ==========================================
-#  TASK 1 of 4: make reference dictionary
-# ==========================================
-task makeRefDictionary {
-input {
-   String refFasta
-   Int?   jobMemory = 16
-   String? modules   = "java/8 picard/2.19.2 hg19/p13"
-}
-
-parameter_meta {
- refFasta: "Path to fasta reference file"
- jobMemory: "Memory allocated to Job"
- modules: "Names and versions of modules needed"
-}
-
-command <<<
- java -Xmx~{jobMemory-6}G -jar $PICARD_ROOT/picard.jar CreateSequenceDictionary \
-                              REFERENCE=~{refFasta} \
-                              OUTPUT="~{basename(refFasta, '.fa')}.dict" 
->>>
-
-runtime {
-  memory:  "~{jobMemory} GB"
-  modules: "~{modules}"
-}
-
-output {
-  File refDict = "~{basename(refFasta, '.fa')}.dict"
-}
-}
-
-# ==========================================
-#  TASK 2 of 4: convert bed to intervals
+#  TASK 1 of 3: convert bed to intervals
 # ==========================================
 task bedToIntervals {
 input {
-   File   inputBed
-   File   refDict       
-   Int?   jobMemory = 16
-   String? modules   = "java/8 picard/2.19.2" 
+   File    inputBed
+   String? refDict = "$HG19_ROOT/hg19_random.dict"
+   Int?    jobMemory = 16
+   String? modules   = "java/8 picard/2.19.2 hg19/p13" 
 }
 
 command <<<
@@ -100,7 +67,7 @@ output {
 
 
 # ==========================================
-#  TASK 3 of 4: collect HS metric
+#  TASK 2 of 3: collect HS metric
 # ==========================================
 task collectHSmetrics {
 input { 
@@ -153,7 +120,7 @@ output {
 
 
 # ==========================================
-#  TASK 4 of 4: collect Insert metrics
+#  TASK 3 of 3: collect Insert metrics
 # ==========================================
 task collectInsertMetrics {
 input {

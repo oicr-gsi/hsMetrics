@@ -16,7 +16,6 @@
             "id": "test_01_picard_with_bed_files",
             "parameters": {
               "wdl_inputs": {
-                "hsMetrics.makeRefDictionary.refFasta": "$HG19_ROOT/hg19_random.fa",
                 "hsMetrics.inputBam": "/.mounts/labs/gsi/testdata/hsMetrics/input_data/PCSI_0098_Pa_P_PE_361_EX_110901_SN803_0064_BC046BACXX_lane_8.chr22.bam",
                 "hsMetrics.outputFileNamePrefix": "PCSI_0098EX",
                 "hsMetrics.baitBed":"/.mounts/labs/gsi/testdata/hsMetrics/input_data/Agilent_SureSelectXT_Human_All_Exon_V5_UTRs.bed",
