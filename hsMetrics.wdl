@@ -5,7 +5,7 @@ input {
    File    inputBam
    File    baitBed
    File    targetBed
-   String? outputFileNamePrefix = basename(inputBam, '.bam')
+   String outputFileNamePrefix = basename(inputBam, '.bam')
 }
 
 call bedToIntervals as bedToTargetIntervals { input: inputBed = targetBed }
@@ -14,9 +14,13 @@ call bedToIntervals as bedToBaitIntervals { input: inputBed = baitBed }
 call collectHSmetrics{ input: inputBam = inputBam, baitIntervals = bedToBaitIntervals.outputIntervals, targetIntervals = bedToTargetIntervals.outputIntervals, outputPrefix = outputFileNamePrefix }
 
 meta {
- author: "Peter Ruzanov"
- email: "peter.ruzanov@oicr.on.ca"
- description: "HSMetrics 2.0"
+  author: "Peter Ruzanov"
+  email: "peter.ruzanov@oicr.on.ca"
+  description: "HSMetrics 2.0"
+  dependencies: [{
+    name: "picard/2.21.2",
+    url: "https://broadinstitute.github.io/picard/"
+  }]
 }
 
 output {
@@ -28,9 +32,9 @@ output {
 task bedToIntervals {
 input {
    File    inputBed
-   String? refDict = "$HG19_ROOT/hg19_random.dict"
-   Int?    jobMemory = 16
-   String? modules   = "picard/2.21.2 hg19/p13"
+   String refDict = "$HG19_ROOT/hg19_random.dict"
+   Int    jobMemory = 16
+   String modules   = "picard/2.21.2 hg19/p13"
 }
 
 command <<<
@@ -62,13 +66,13 @@ input {
    File   inputBam
    File   baitIntervals
    File   targetIntervals
-   String? refFasta   = "$HG19_ROOT/hg19_random.fa"
-   String? metricTag  = "HS"
-   String? filter     = "LENIENT"
-   String? outputPrefix = "OUTPUT"
-   Int?   jobMemory   = 18
-   Int?   coverageCap = 500
-   String? modules    = "picard/2.21.2 hg19/p13"
+   String refFasta   = "$HG19_ROOT/hg19_random.fa"
+   String metricTag  = "HS"
+   String filter     = "LENIENT"
+   String outputPrefix = "OUTPUT"
+   Int   jobMemory   = 18
+   Int   coverageCap = 500
+   String modules    = "picard/2.21.2 hg19/p13"
 }
 
 command <<<
