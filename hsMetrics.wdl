@@ -5,16 +5,13 @@ input {
    File    inputBam
    File    baitBed
    File    targetBed
-   String? outputFileNamePrefix = ""
+   String? outputFileNamePrefix = basename(inputBam, '.bam')
 }
-
-String? outputPrefix = if outputFileNamePrefix=="" then basename(inputBam, '.bam') else outputFileNamePrefix
 
 call bedToIntervals as bedToTargetIntervals { input: inputBed = targetBed }
 call bedToIntervals as bedToBaitIntervals { input: inputBed = baitBed }
 
-call collectHSmetrics{ input: inputBam = inputBam, baitIntervals = bedToBaitIntervals.outputIntervals, targetIntervals = bedToTargetIntervals.outputIntervals, outputPrefix = outputPrefix }
-call collectInsertMetrics{ input: inputBam = inputBam, outputPrefix = outputPrefix }
+call collectHSmetrics{ input: inputBam = inputBam, baitIntervals = bedToBaitIntervals.outputIntervals, targetIntervals = bedToTargetIntervals.outputIntervals, outputPrefix = outputFileNamePrefix }
 
 meta {
  author: "Peter Ruzanov"
@@ -24,21 +21,16 @@ meta {
 
 output {
   File outputHSMetrics  = collectHSmetrics.outputHSMetrics
-  File outputINSMetrics = collectInsertMetrics.outputINSMetrics
-  File outputINSPDF     = collectInsertMetrics.outputINSPDF
 }
 
 }
 
-# ==========================================
-#  TASK 1 of 3: convert bed to intervals
-# ==========================================
 task bedToIntervals {
 input {
    File    inputBed
    String? refDict = "$HG19_ROOT/hg19_random.dict"
    Int?    jobMemory = 16
-   String? modules   = "java/8 picard/2.19.2 hg19/p13" 
+   String? modules   = "picard/2.21.2 hg19/p13"
 }
 
 command <<<
@@ -65,10 +57,6 @@ output {
 }
 }
 
-
-# ==========================================
-#  TASK 2 of 3: collect HS metric
-# ==========================================
 task collectHSmetrics {
 input { 
    File   inputBam
@@ -80,7 +68,7 @@ input {
    String? outputPrefix = "OUTPUT"
    Int?   jobMemory   = 18
    Int?   coverageCap = 500
-   String? modules    = "java/8 picard/2.19.2 hg19/p13"
+   String? modules    = "picard/2.21.2 hg19/p13"
 }
 
 command <<<
@@ -92,7 +80,7 @@ command <<<
                               COVERAGE_CAP=~{coverageCap} \
                               INPUT=~{inputBam} \
                               OUTPUT="~{outputPrefix}.~{metricTag}.txt" \
-                              VALIDATION_STRINGENCY=~{filter} 
+                              VALIDATION_STRINGENCY=~{filter}
 >>>
 
 parameter_meta {
@@ -116,47 +104,6 @@ runtime {
 output {
   File outputHSMetrics = "~{outputPrefix}.~{metricTag}.txt"
 }
-}
 
-
-# ==========================================
-#  TASK 3 of 3: collect Insert metrics
-# ==========================================
-task collectInsertMetrics {
-input {
-   File    inputBam
-   String? metricTag  = "INS"
-   Int?    jobMemory  = 18
-   Float?  minPct     = 0.5
-   String? outputPrefix = "OUTPUT"
-   String? modules    = "java/8 rstats/3.6 picard/2.19.2"
-}
-
-command <<<
- java -Xmx~{jobMemory-6}G -jar $PICARD_ROOT/picard.jar CollectInsertSizeMetrics \
-                              INPUT=~{inputBam} \
-                              OUTPUT="~{outputPrefix}.~{metricTag}.txt" \
-                              H="~{outputPrefix}.~{metricTag}.PDF" \
-                              M=~{minPct}
->>>
-
-parameter_meta {
- inputBam: "Input bam file"
- metricTag: "Extension for metrics file"
- minPct: "Discard any data categories (out of FR, TANDEM, RF) that have fewer than this percentage of overall reads"
- outputPrefix: "prefix to build a name for output file"
- jobMemory: "Memory allocated to job"
- modules: "Names and versions of modules needed"
-}
-
-runtime {
-  memory:  "~{jobMemory} GB"
-  modules: "~{modules}"
-}
-
-output {
-  File outputINSMetrics = "~{outputPrefix}.~{metricTag}.txt"
-  File outputINSPDF     = "~{outputPrefix}.~{metricTag}.PDF"
-}
 }
 
