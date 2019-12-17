@@ -35,6 +35,7 @@ input {
    String refDict = "$HG19_ROOT/hg19_random.dict"
    Int    jobMemory = 16
    String modules   = "picard/2.21.2 hg19/p13"
+   Int timeout = 1
 }
 
 command <<<
@@ -49,11 +50,13 @@ parameter_meta {
  refDict: "Path to index of fasta reference file"
  jobMemory: "Memory allocated to job"
  modules: "Names and versions of modules needed"
+ timeout: "Maximum amount of time (in hours) the task can run for."
 }
 
 runtime {
   memory:  "~{jobMemory} GB"
   modules: "~{modules}"
+  timeout: "~{timeout}"
 }
 
 output {
@@ -73,6 +76,7 @@ input {
    Int   jobMemory   = 18
    Int   coverageCap = 500
    String modules    = "picard/2.21.2 hg19/p13"
+   Int timeout = 5
 }
 
 command <<<
@@ -98,11 +102,13 @@ parameter_meta {
  coverageCap: "Parameter to set a max coverage limit for Theoretical Sensitivity calculations"
  jobMemory: "Memory allocated to job"
  modules: "Names and versions of modules needed"
+ timeout: "Maximum amount of time (in hours) the task can run for."
 }
 
 runtime {
   memory:  "~{jobMemory} GB"
   modules: "~{modules}"
+  timeout: "~{timeout}"
 }
 
 output {
