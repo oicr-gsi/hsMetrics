@@ -1,0 +1,79 @@
+[
+    {
+        "arguments": {
+            "hsMetrics.baitBed": {
+                "contents": {
+                    "configuration": "/.mounts/labs/gsi/testdata/hsMetrics/input_data/Agilent_SureSelectXT_Human_All_Exon_V5_UTRs.bed",
+                    "externalIds": [
+                        {
+                            "id": "TEST",
+                            "provider": "TEST"
+                        }
+                    ]
+                },
+                "type": "EXTERNAL"
+            },
+            "hsMetrics.bedToBaitIntervals.jobMemory": null,
+            "hsMetrics.bedToBaitIntervals.modules": null,
+            "hsMetrics.bedToBaitIntervals.refDict": null,
+            "hsMetrics.bedToBaitIntervals.timeout": null,
+            "hsMetrics.bedToTargetIntervals.jobMemory": null,
+            "hsMetrics.bedToTargetIntervals.modules": null,
+            "hsMetrics.bedToTargetIntervals.refDict": null,
+            "hsMetrics.bedToTargetIntervals.timeout": null,
+            "hsMetrics.collectHSmetrics.coverageCap": null,
+            "hsMetrics.collectHSmetrics.filter": null,
+            "hsMetrics.collectHSmetrics.jobMemory": null,
+            "hsMetrics.collectHSmetrics.metricTag": null,
+            "hsMetrics.collectHSmetrics.modules": null,
+            "hsMetrics.collectHSmetrics.refFasta": null,
+            "hsMetrics.collectHSmetrics.timeout": null,
+            "hsMetrics.inputBam": {
+                "contents": {
+                    "configuration": "/.mounts/labs/gsi/testdata/hsMetrics/input_data/PCSI_0098_Pa_P_PE_361_EX_110901_SN803_0064_BC046BACXX_lane_8.chr22.bam",
+                    "externalIds": [
+                        {
+                            "id": "TEST",
+                            "provider": "TEST"
+                        }
+                    ]
+                },
+                "type": "EXTERNAL"
+            },
+            "hsMetrics.outputFileNamePrefix": "PCSI_0098EX",
+            "hsMetrics.targetBed": {
+                "contents": {
+                    "configuration": "/.mounts/labs/gsi/testdata/hsMetrics/input_data/Agilent_SureSelectXT_Human_All_Exon_V5_UTRs.bed",
+                    "externalIds": [
+                        {
+                            "id": "TEST",
+                            "provider": "TEST"
+                        }
+                    ]
+                },
+                "type": "EXTERNAL"
+            }
+        },
+        "description": "HSMetrics workflow test",
+        "engineArguments": {},
+        "id": "test_01_picard_with_bed_files",
+        "metadata": {
+            "hsMetrics.outputHSMetrics": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_hsMetrics_test_01_picard_with_bed_files_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            }
+        },
+        "validators": [
+            {
+                "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
+                "metrics_compare": "@CHECKOUT@/tests/compare.sh",
+                "output_metrics": "/.mounts/labs/gsi/testdata/hsMetrics/output_metrics/test_01_picard_with_bed_files.metrics",
+                "type": "script"
+            }
+        ]
+    }
+]
