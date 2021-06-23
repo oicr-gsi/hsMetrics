@@ -30,8 +30,9 @@
                 "type": "EXTERNAL"
             },
             "hsMetrics.outputFileNamePrefix": "PCSI_0098EX",
-            "hsMetrics.targetBed": "/.mounts/labs/gsi/testdata/hsMetrics/input_data/Agilent_SureSelectXT_Human_All_Exon_V5_UTRs.bed",
-            "description": "HSMetrics workflow test",
+            "hsMetrics.targetBed": "/.mounts/labs/gsi/testdata/hsMetrics/input_data/Agilent_SureSelectXT_Human_All_Exon_V5_UTRs.bed"
+        },
+        "description": "HSMetrics workflow test",
         "engineArguments": {},
         "id": "test_01_picard_with_bed_files",
         "metadata": {
@@ -53,5 +54,4 @@
             }
         ]
     }
-  }
 ]
