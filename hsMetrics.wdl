@@ -3,8 +3,8 @@ version 1.0
 workflow hsMetrics {
 input {
    File    inputBam
-   File    baitBed
-   File    targetBed
+   String  baitBed
+   String  targetBed
    String outputFileNamePrefix = basename(inputBam, '.bam')
 }
 
@@ -31,7 +31,7 @@ output {
 
 task bedToIntervals {
 input {
-   File    inputBed
+   String inputBed
    String refDict = "$HG19_ROOT/hg19_random.dict"
    Int    jobMemory = 16
    String modules   = "picard/2.21.2 hg19/p13"
@@ -46,7 +46,7 @@ command <<<
 >>>
 
 parameter_meta {
- inputBed: "Input bed file"
+ inputBed: "Path to input bed file"
  refDict: "Path to index of fasta reference file"
  jobMemory: "Memory allocated to job"
  modules: "Names and versions of modules needed"
@@ -67,8 +67,8 @@ output {
 task collectHSmetrics {
 input { 
    File   inputBam
-   File   baitIntervals
-   File   targetIntervals
+   String baitIntervals
+   String targetIntervals
    String refFasta   = "$HG19_ROOT/hg19_random.fa"
    String metricTag  = "HS"
    String filter     = "LENIENT"
@@ -93,8 +93,8 @@ command <<<
 
 parameter_meta {
  inputBam: "Input bam file"
- baitIntervals: "bed file with bait intervals"
- targetIntervals: "bed file with target intervals"
+ baitIntervals: "path to bed file with bait intervals"
+ targetIntervals: "path to bed file with target intervals"
  refFasta: "Path to fasta reference file"
  metricTag: "Extension for metrics file"
  filter: "Settings for picard filter"

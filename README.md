@@ -22,8 +22,8 @@ java -jar cromwell.jar run hsMetrics.wdl --inputs inputs.json
 Parameter|Value|Description
 ---|---|---
 `inputBam`|File|
-`baitBed`|File|
-`targetBed`|File|
+`baitBed`|String|
+`targetBed`|String|
 
 
 #### Optional workflow parameters:
