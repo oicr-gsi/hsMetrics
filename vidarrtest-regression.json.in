@@ -13,6 +13,7 @@
             "hsMetrics.collectHSmetrics.coverageCap": null,
             "hsMetrics.collectHSmetrics.filter": null,
             "hsMetrics.collectHSmetrics.jobMemory": null,
+            "hsMetrics.collectHSmetrics.maxRecordsInRam": null,
             "hsMetrics.collectHSmetrics.metricTag": null,
             "hsMetrics.collectHSmetrics.modules": null,
             "hsMetrics.collectHSmetrics.refFasta": null,
