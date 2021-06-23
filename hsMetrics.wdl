@@ -75,6 +75,7 @@ input {
    String outputPrefix = "OUTPUT"
    Int   jobMemory   = 18
    Int   coverageCap = 500
+   Int   maxRecordsInRam = 250000
    String modules    = "picard/2.21.2 hg19/p13"
    Int timeout = 5
 }
@@ -86,6 +87,7 @@ command <<<
                               TARGET_INTERVALS=~{targetIntervals} \
                               R=~{refFasta} \
                               COVERAGE_CAP=~{coverageCap} \
+                              MAX_RECORDS_IN_RAM=~{maxRecordsInRam} \
                               INPUT=~{inputBam} \
                               OUTPUT="~{outputPrefix}.~{metricTag}.txt" \
                               VALIDATION_STRINGENCY=~{filter}
@@ -100,6 +102,7 @@ parameter_meta {
  filter: "Settings for picard filter"
  outputPrefix: "prefix to build a name for output file"
  coverageCap: "Parameter to set a max coverage limit for Theoretical Sensitivity calculations"
+ maxRecordsInRam: "Specifies the N of records stored in RAM before spilling to disk. Increasing this number increases the amount of RAM needed."
  jobMemory: "Memory allocated to job"
  modules: "Names and versions of modules needed"
  timeout: "Maximum amount of time (in hours) the task can run for."

@@ -48,6 +48,7 @@ Parameter|Value|Default|Description
 `collectHSmetrics.filter`|String|"LENIENT"|Settings for picard filter
 `collectHSmetrics.jobMemory`|Int|18|Memory allocated to job
 `collectHSmetrics.coverageCap`|Int|500|Parameter to set a max coverage limit for Theoretical Sensitivity calculations
+`maxRecordsInRam`|Int|2500000|Specifies the N of records stored in RAM before spilling to disk. Increasing this number increases the amount of RAM needed
 `collectHSmetrics.modules`|String|"picard/2.21.2 hg19/p13"|Names and versions of modules needed
 `collectHSmetrics.timeout`|Int|5|Maximum amount of time (in hours) the task can run for.
 
