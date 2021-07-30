@@ -21,6 +21,16 @@ meta {
     name: "picard/2.21.2",
     url: "https://broadinstitute.github.io/picard/"
   }]
+  output_meta: {
+   outputHSMetrics: "File with HS metrics"
+  } 
+}
+
+parameter_meta {
+ inputBam: "Input bam file"
+ baitBed: "Path to input bait bed file"
+ targetBed: "Path to input target bed"
+ outputFileNamePrefix: "Prefix for output"
 }
 
 output {

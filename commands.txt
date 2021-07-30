@@ -1,0 +1,30 @@
+## Commands
+This section lists command(s) run by hsMetrics workflow
+
+* Running hsMetrics
+
+This workflow wraps one of the Picard's metrics tools
+
+Convert a bed file into interval list:
+
+```
+ java -Xmx[JOB_MEMORY-6]G -jar picard.jar BedToIntervalList
+                               INPUT = INPUT_BED 
+                               OUTPUT = INPUT_BED_BASENAME.interval_list
+                               SD = REF_DICT
+```
+
+Run HSmetrics:
+
+```
+ java -Xmx[JOB_MEMORY-6]G -jar picard.jar CollectHsMetrics 
+                               TMP_DIR = picardTmp 
+                               BAIT_INTERVALS = BAIT_INTERVALS
+                               TARGET_INTERVALS = TARGET_INTERVALS
+                               R = REF_FASTA
+                               COVERAGE_CAP = COVERAGE_CAP
+                               MAX_RECORDS_IN_RAM = MAX_RECORDS_IN_RAM
+                               INPUT = INPUT_BAM
+                               OUTPUT = OUTPUT_PREFIX.METRIC_TAG.txt
+                               VALIDATION_STRINGENCY = FILTER
+```
