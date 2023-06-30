@@ -48,7 +48,7 @@ call collectHSmetrics{
          baitIntervals = bedToBaitIntervals.outputIntervals, 
          targetIntervals = bedToTargetIntervals.outputIntervals, 
          outputPrefix = outputFileNamePrefix,
-         resources[reference].refFasta,
+         refFasta = resources[reference].refFasta,
          modules = resources[reference].modules 
          }
 
@@ -70,6 +70,7 @@ parameter_meta {
  baitBed: "Path to input bait bed file"
  targetBed: "Path to input target bed"
  outputFileNamePrefix: "Prefix for output"
+ reference: "the reference genome for input sample"
 }
 
 output {
