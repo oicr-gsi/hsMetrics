@@ -1,6 +1,7 @@
 [
     {
         "arguments": {
+            "hsMetrics.reference": "hg19",
             "hsMetrics.baitBed": "/.mounts/labs/gsi/testdata/hsMetrics/input_data/Agilent_SureSelectXT_Human_All_Exon_V5_UTRs.bed",
             "hsMetrics.bedToBaitIntervals.jobMemory": null,
             "hsMetrics.bedToBaitIntervals.modules": null,

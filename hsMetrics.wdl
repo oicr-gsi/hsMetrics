@@ -1,17 +1,56 @@
 version 1.0
 
+
+
+struct GenomeResources {
+  String refDict
+  String refFasta
+  String modules
+}
+
 workflow hsMetrics {
+  
+Map[String,GenomeResources] resources = {
+  "hg19": {
+    "refDict": "$HG19_ROOT/hg19_random.dict",
+    "refFasta": "$HG19_ROOT/hg19_random.fa",
+    "modules": "picard/2.19.2 hg19/p13"
+  },
+  "hg38": {
+    "refDict": "$HG38_ROOT/hg38_random.dict",
+    "refFasta": "$HG38_ROOT/hg38_random.fa",
+    "modules": "picard/2.19.2 hg38/p12"
+  }
+}
+
 input {
    File    inputBam
    String  baitBed
    String  targetBed
    String outputFileNamePrefix = basename(inputBam, '.bam')
+   String reference
 }
 
-call bedToIntervals as bedToTargetIntervals { input: inputBed = targetBed }
-call bedToIntervals as bedToBaitIntervals { input: inputBed = baitBed }
+call bedToIntervals as bedToTargetIntervals { 
+  input: inputBed = targetBed,
+         refDict = resources[reference].refDict,
+         modules = resources[reference].modules
+    }
 
-call collectHSmetrics{ input: inputBam = inputBam, baitIntervals = bedToBaitIntervals.outputIntervals, targetIntervals = bedToTargetIntervals.outputIntervals, outputPrefix = outputFileNamePrefix }
+call bedToIntervals as bedToBaitIntervals { 
+  input: inputBed = baitBed,
+         refDict = resources[reference].refDict,
+         modules = resources[reference].modules
+    }
+
+call collectHSmetrics{ 
+  input: inputBam = inputBam, 
+         baitIntervals = bedToBaitIntervals.outputIntervals, 
+         targetIntervals = bedToTargetIntervals.outputIntervals, 
+         outputPrefix = outputFileNamePrefix,
+         resources[reference].refFasta,
+         modules = resources[reference].modules 
+         }
 
 meta {
   author: "Peter Ruzanov"
