@@ -50,30 +50,30 @@ Parameter|Value|Default|Description
 
 ### Outputs
 
-Output | Type | Description
----|---|---
-`outputHSMetrics`|File|File with HS metrics
+Output | Type | Description | Labels
+---|---|---|---
+`outputHSMetrics`|File|File with HS metrics|vidarr_label: outputHSMetrics
 
 
 ## Commands
- This section lists command(s) run by hsMetrics workflow
+This section lists command(s) run by hsMetrics workflow
  
- * Running hsMetrics
+* Running hsMetrics
  
- This workflow wraps one of the Picard's metrics tools
+This workflow wraps one of the Picard's metrics tools
  
- Convert a bed file into interval list:
+### Convert a bed file into interval list:
  
- ```
+```
   java -Xmx[JOB_MEMORY-6]G -jar picard.jar BedToIntervalList
                                 INPUT = INPUT_BED 
                                 OUTPUT = INPUT_BED_BASENAME.interval_list
                                 SD = REF_DICT
- ```
+```
  
- Run HSmetrics:
+### Run HSmetrics:
  
- ```
+```
   java -Xmx[JOB_MEMORY-6]G -jar picard.jar CollectHsMetrics 
                                 TMP_DIR = picardTmp 
                                 BAIT_INTERVALS = BAIT_INTERVALS
@@ -84,8 +84,8 @@ Output | Type | Description
                                 INPUT = INPUT_BAM
                                 OUTPUT = OUTPUT_PREFIX.METRIC_TAG.txt
                                 VALIDATION_STRINGENCY = FILTER
- ```
- ## Support
+```
+## Support
 
 For support, please file an issue on the [Github project](https://github.com/oicr-gsi) or send an email to gsi@oicr.on.ca .
 
