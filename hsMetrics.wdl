@@ -60,9 +60,12 @@ meta {
     name: "picard/2.21.2",
     url: "https://broadinstitute.github.io/picard/"
   }]
-  output_meta: {
-   outputHSMetrics: "File with HS metrics"
-  } 
+    output_meta: {
+    outputHSMetrics: {
+        description: "File with HS metrics",
+        vidarr_label: "outputHSMetrics"
+    }
+}
 }
 
 parameter_meta {
