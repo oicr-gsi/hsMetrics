@@ -17,9 +17,9 @@ Map[String,GenomeResources] resources = {
     "modules": "picard/2.19.2 hg19/p13"
   },
   "hg38": {
-    "refDict": "$HG38_ROOT/hg38_random.dict",
-    "refFasta": "$HG38_ROOT/hg38_random.fa",
-    "modules": "picard/2.19.2 hg38/p12"
+    "refDict": "$HG38_NOALT_ROOT/hg38_noAlt.dict",
+    "refFasta": "$HG38_NOALT_ROOT/hg38_noAlt.fa",
+    "modules": "picard/2.19.2 hg38-noalt/p12"
   }
 }
 
@@ -53,8 +53,8 @@ call collectHSmetrics{
          }
 
 meta {
-  author: "Peter Ruzanov"
-  email: "pruzanov@oicr.on.ca"
+  author: "Peter Ruzanov and Aditi Nallan"
+  email: "pruzanov@oicr.on.ca and anallan@oicr.on.ca"
   description: "The workflow runs Picard tools CollectHsMetrics, a tool which takes a SAM/BAM file input and collects metrics that are specific for sequence datasets generated through hybrid-selection. Hybrid-selection (HS) is the most commonly used technique to capture exon-specific sequences for targeted sequencing experiments such as exome sequencing. The generated metrics are intended for evaluating the performance of the wet-lab assay that generated the data and allow to estimate how well the data will behave in the downstream analysis."
   dependencies: [{
     name: "picard/2.21.2",
