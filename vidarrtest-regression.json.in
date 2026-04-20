@@ -81,7 +81,7 @@
             "hsMetrics.collectHSmetrics.timeout": null,
             "hsMetrics.inputBam": {
                 "contents": {
-                    "configuration": "/.mounts/labs/gsi/testdata/hsMetrics/test_inputs/CHARM2_chr22.bam",
+                    "configuration": "/.mounts/labs/gsi/testdata/hsMetrics/test_inputs/CHARM2_full.bam ",
                     "externalIds": [
                         {
                             "id": "TEST",
