@@ -20,6 +20,11 @@ Map[String,GenomeResources] resources = {
     "refDict": "$HG38_ROOT/hg38_random.dict",
     "refFasta": "$HG38_ROOT/hg38_random.fa",
     "modules": "picard/2.19.2 hg38/p12"
+  },
+  "hg38_noAlt": {
+    "refDict": "$HG38_NOALT_ROOT/hg38_noAlt.dict",
+    "refFasta": "$HG38_NOALT_ROOT/hg38_noAlt.fa",
+    "modules": "picard/2.19.2 hg38-noalt/p12"
   }
 }
 
